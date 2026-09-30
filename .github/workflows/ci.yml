@@ -26,6 +26,13 @@ jobs:
 
       - name: Lancer les tests
         run: uv run pytest -v --cov=fleet_api --cov-report=html
+
+      - name: Publier le rapport de couverture
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage-report
+          path: htmlcov/
+          retention-days: 7
   lint:
     runs-on: ubuntu-latest
     steps:
