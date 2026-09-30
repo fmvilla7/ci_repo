@@ -4,15 +4,66 @@ on: [push]
 
 jobs:
   test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: [3.12, 3.13, 3.14]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+      
+      - name: Installer uv
+        uses: astral-sh/setup-uv@v10.0.1
+        with:
+          enable-cache: true
+
+      - name: Installer les dépendances
+        run: uv sync
+
+      - name: Lancer les tests
+        run: uv run pytest -v --cov=fleet_api --cov-report=html
+
+      - name: Publier le rapport de couverture
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage-report-${{ matrix.os }}-py${{ matrix.python }}
+          path: htmlcov/
+          retention-days: 7
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       
       - name: Installer uv
         uses: astral-sh/setup-uv@v10.0.1
+        with:
+          enable-cache: true
 
       - name: Installer les dépendances
         run: uv sync
 
-      - name: Lancer les tests
-        run: uv run pytest -v
+      - name: Lancer le lint
+        run: uv run ruff check .
+
+      - name: Formatter le code
+        run: uv run ruff format --check .
+  
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Installer uv
+        uses: astral-sh/setup-uv@v10.0.1
+        with:
+          enable-cache: true
+
+      - name: Installer les dépendances
+        run: uv sync
+
+      - name: Lancer la build
+        run: uv build
