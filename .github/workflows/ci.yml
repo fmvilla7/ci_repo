@@ -25,7 +25,7 @@ jobs:
         run: uv sync
 
       - name: Lancer les tests
-        run: uv run pytest -v
+        run: uv run pytest -v --cov=fleet_api --cov-report=html
   lint:
     runs-on: ubuntu-latest
     steps:
