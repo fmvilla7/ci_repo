@@ -78,3 +78,20 @@ testées et bien intégrées que six bâclées.
 | 6 | Couverture, typage, analyse statique, quality gate |
 | 7 | Release versionnée, environnements, bascule et retour arrière |
 | 8 | Revue croisée, finalisation |
+
+
+Cache Froid : 50s
+Cache Chaud : 16s
+48. Cache restored successfully
+
+src/fleet_api/telemetry.py	battery_percentage	 	      100%	4	0	0	100%	2	0	100%
+src/fleet_api/telemetry.py	is_low_battery	 	            0%	1	1	0	 	100%	0	0	0%
+src/fleet_api/telemetry.py	distance_m	 	               100%	1	0	0	100%	0	0	100%
+src/fleet_api/telemetry.py	path_length_m	 	            0%	4	4	0	 	0%	2	0	 	0%
+src/fleet_api/telemetry.py	average_speed_mps	 	         0%	3	3	0	 	0%	2	0	 	0%
+src/fleet_api/telemetry.py	estimate_runtime_minutes	 	0%	3	3	0	 	0%	2	0	 	0%
+src/fleet_api/telemetry.py	median_voltage_mv	 	         0%	3	3	0	 	0%	2	0	 	0%
+src/fleet_api/telemetry.py	robot_state	 	               0%	7	7	0	 	0%	6	0	 	0%
+src/fleet_api/telemetry.py	detect_voltage_dropouts	 	   0%	6	6	0	 	0%	4	0	 	0%
+src/fleet_api/telemetry.py	fleet_summary	 	            0%	2	2	0	 	100%	0	0	0%
+src/fleet_api/telemetry.py	(no function)	 	            100%	18	0	0	100%	0	0	100%

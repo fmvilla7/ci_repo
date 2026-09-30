@@ -1,4 +1,4 @@
-name: Setup
+name: Setup Python and UV
 description: Installe Python, uv (avec cache) et synchronise les dépendances du projet.
 
 inputs:

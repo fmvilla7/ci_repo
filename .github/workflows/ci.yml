@@ -36,11 +36,8 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Lancer le lint
-        run: uv run ruff check .
+        run: uv run pre-commit run --all-files
 
-      - name: Formatter le code
-        run: uv run ruff format --check .
-  
   build:
     runs-on: ubuntu-latest
     steps:
