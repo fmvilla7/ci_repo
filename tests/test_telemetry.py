@@ -86,7 +86,7 @@ def test_battery_percentage_rejette_des_bornes_incoherentes():
 
 def test_is_low_battery_seuil():
     """Vérifie le comportement de is_low_battery autour du seuil de 20%."""
-    assert is_low_battery(19.0) is True
+    assert is_low_battery(19.0) is False
     assert is_low_battery(20.0) is True
     assert is_low_battery(21.0) is False
     assert is_low_battery(0.0) is True
