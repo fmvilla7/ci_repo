@@ -30,7 +30,7 @@ jobs:
       - name: Publier le rapport de couverture
         uses: actions/upload-artifact@v7
         with:
-          name: coverage-report
+          name: coverage-report-${{ matrix.os }}-py${{ matrix.python }}
           path: htmlcov/
           retention-days: 7
   lint:
