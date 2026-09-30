@@ -95,3 +95,4 @@ src/fleet_api/telemetry.py	robot_state	 	               0%	7	7	0	 	0%	6	0	 	0%
 src/fleet_api/telemetry.py	detect_voltage_dropouts	 	   0%	6	6	0	 	0%	4	0	 	0%
 src/fleet_api/telemetry.py	fleet_summary	 	            0%	2	2	0	 	100%	0	0	0%
 src/fleet_api/telemetry.py	(no function)	 	            100%	18	0	0	100%	0	0	100%
+# test concurrency 1
