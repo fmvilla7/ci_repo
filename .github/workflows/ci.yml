@@ -4,9 +4,17 @@ on: [push]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: [3.12, 3.13, 3.14]
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
       
       - name: Installer uv
         uses: astral-sh/setup-uv@v10.0.1
