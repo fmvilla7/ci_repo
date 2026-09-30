@@ -16,3 +16,33 @@ jobs:
 
       - name: Lancer les tests
         run: uv run pytest -v
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Installer uv
+        uses: astral-sh/setup-uv@v10.0.1
+
+      - name: Installer les dépendances
+        run: uv sync
+
+      - name: Lancer le lint
+        run: uv run ruff check .
+
+      - name: Formatter le code
+        run: uv run ruff format --check .
+  
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Installer uv
+        uses: astral-sh/setup-uv@v10.0.1
+
+      - name: Installer les dépendances
+        run: uv sync
+
+      - name: Lancer la build
+        run: uv build
