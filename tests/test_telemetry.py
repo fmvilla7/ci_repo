@@ -39,7 +39,7 @@ def _reading(voltage_mv, timestamp_s=0, is_charging=False, robot_id="robot-1"):
 
 def test_battery_percentage_bornes_et_cas_nominal():
     """La conversion est linéaire et bornée à [0, 100]."""
-    assert battery_percentage(12_600) == 99.0
+    assert battery_percentage(12_600) == 100
     assert battery_percentage(10_500) == 0.0
     assert battery_percentage(11_550) == 50.0
     # Hors bornes : on sature, on ne dépasse pas.
