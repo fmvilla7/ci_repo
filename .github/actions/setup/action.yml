@@ -1,0 +1,24 @@
+name: Setup
+description: Installe Python, uv (avec cache) et synchronise les dépendances du projet.
+
+inputs:
+  python-version:
+    description: Version de Python à installer
+    required: false
+    default: "3.14"
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v7
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Installer uv
+      uses: astral-sh/setup-uv@v10.0.1
+      with:
+        enable-cache: true
+
+    - name: Installer les dépendances
+      run: uv sync
+      shell: bash

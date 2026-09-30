@@ -12,17 +12,11 @@ jobs:
         python: [3.12, 3.13, 3.14]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v7
+
+      - name: Installer Python, uv et les dépendances
+        uses: ./.github/actions/setup
         with:
           python-version: ${{ matrix.python }}
-      
-      - name: Installer uv
-        uses: astral-sh/setup-uv@v10.0.1
-        with:
-          enable-cache: true
-
-      - name: Installer les dépendances
-        run: uv sync
 
       - name: Lancer les tests
         run: uv run pytest -v --cov=fleet_api --cov-report=html
@@ -37,14 +31,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Installer uv
-        uses: astral-sh/setup-uv@v10.0.1
-        with:
-          enable-cache: true
 
-      - name: Installer les dépendances
-        run: uv sync
+      - name: Installer Python, uv et les dépendances
+        uses: ./.github/actions/setup
 
       - name: Lancer le lint
         run: uv run ruff check .
@@ -56,14 +45,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Installer uv
-        uses: astral-sh/setup-uv@v10.0.1
-        with:
-          enable-cache: true
 
-      - name: Installer les dépendances
-        run: uv sync
+      - name: Installer Python, uv et les dépendances
+        uses: ./.github/actions/setup
 
       - name: Lancer la build
         run: uv build
